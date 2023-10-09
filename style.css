@@ -9,7 +9,6 @@ main{
     background-color: rgb(57, 98, 150);
     display: flex;
     flex-wrap: wrap;
-    /* border: 1px solid black ; */
     gap: 20px;
     justify-content: space-around;
 }
@@ -17,7 +16,6 @@ main{
 div{
     background-color:rgb(190, 205, 219);
     width: 25%;
-    /* border: 1px solid black; */
     border-radius: 7px;
     display: flex;
     flex-wrap: wrap;
@@ -26,7 +24,6 @@ div{
 }
 h2{
     display: flex;
-    /* border-style: none !important; */
     flex-wrap: wrap;
     font-size: 20px;
 }
