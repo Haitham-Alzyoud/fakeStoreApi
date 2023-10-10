@@ -3,6 +3,9 @@ h1{
     justify-content: center;
     align-items: center;
 }
+html{
+    height: 100vh;
+}
 
 main{
     padding: 5px;
@@ -43,4 +46,21 @@ img{
         display: flex;
         flex-direction: column;
     }
+}
+
+#changes{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    flex-direction: column;
+    gap: 20px;
+    border: 1px solid black;
+}
+#changes > div{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    border: 5px solid #fff;
+    margin: 20px;
 }

@@ -56,9 +56,66 @@ document.addEventListener("DOMContentLoaded" , () =>{
             `
             change.insertAdjacentHTML("beforeend",h);
             form.reset();
+
         } )
         
     })
+    function retrive () {
+        fetch ('http://localhost:3000/post')
+        
+        .then(response => response.json())
+        .then(sendData => { 
+            
+            change.innerHTML="";
+            sendData.forEach(k => {
+            
+            let h = `
+            <div>
+            <h2>${k.title}</h2>
+            <p>${k.content}</p>
+            <button data-id="${k.id}" class = "delete">Delete</button>
+            <button data-id="${k.id}" class = "update">Edit</button>
+           </div>
+            `
+            // change.appendChild(h);
+            change.insertAdjacentHTML("beforeend",h)
 
+        })
+           
+        })
+    }
+    retrive();
+    change.addEventListener("click" , (e)=>{
+        if(e.target.classList.contains("delete")){
+            const rem = e.target.getAttribute("data-id")
+             fetch (`http://localhost:3000/post/${rem}`,{
+            method: "DELETE",
+             })
+            .then(() => retrive())
+             }
+     
+});
+
+change.addEventListener("click" , (e)=>{
+    let p = prompt("Edit What ever you want")
+    let pr = prompt("Edit ")
+
+    if(e.target.classList.contains("update")){
+        const remo = e.target.getAttribute("data-id")
+         fetch (`http://localhost:3000/post/${remo}`,{
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body : JSON.stringify(
+            {title : p,
+            content:pr}
+            ),
+         })
+        .then(() => retrive())
+         }
+ 
+});
 
 })
+
